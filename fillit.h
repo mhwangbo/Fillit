@@ -6,7 +6,7 @@
 /*   By: mhwangbo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 17:02:13 by mhwangbo          #+#    #+#             */
-/*   Updated: 2018/03/26 17:51:35 by mhwangbo         ###   ########.fr       */
+/*   Updated: 2018/03/28 20:48:18 by mhwangbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,17 @@ typedef struct		s_pos
 	char			c;
 	int				x[4];
 	int				y[4];
+	int				x_po;
+	int				y_po;
 }					t_pos;
-t_pos				*ft_valid(int fd);
+
+t_pos				*ft_valid(int fd, int *blocks);
 char				**block_link(char *str);
-t_pos				*struct_malloc(char **str);
+t_pos				*struct_malloc(char **str, int blocks);
+char				**map_size(int i);
+void				zero_y(t_pos *tetri);
+void				zero_x(t_pos *tetri);
+int					receive_solver(t_pos *tetri, char **map,
+		int loc, int size, int blocks);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mhwangbo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/24 04:51:15 by mhwangbo          #+#    #+#             */
-/*   Updated: 2018/03/26 17:51:52 by mhwangbo         ###   ########.fr       */
+/*   Updated: 2018/03/28 15:48:25 by mhwangbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ static int		*block_val(char *str, int i)
 		}
 		j++;
 	}
-	vali[2] = vali[2] + 1;
 	return (vali);
 }
 
@@ -74,26 +73,25 @@ static int		it_box(char *str)
 	return (1);
 }
 
-t_pos			*ft_valid(int fd)
+t_pos			*ft_valid(int fd, int *blocks)
 {
 	char	buff[550];
 	int		*valid;
 	int		i;
-	int		blocks;
 	char	**split;
 
 	i = read(fd, buff, 550);
 	if (i != 0)
 	{
 		valid = block_val(buff, i);
-		blocks = block_no(valid);
+		*blocks = block_no(valid);
 		if (blocks == 0 || it_box(buff) == 0)
 			return (NULL);
 		else
 		{
 			if ((split = block_link(buff)) == NULL)
 				return (NULL);
-			return (struct_malloc(split));
+			return (struct_malloc(split, *blocks));
 		}
 	}
 	return (NULL);
