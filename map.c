@@ -6,13 +6,13 @@
 /*   By: mhwangbo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/26 18:04:48 by mhwangbo          #+#    #+#             */
-/*   Updated: 2018/03/27 22:54:46 by mhwangbo         ###   ########.fr       */
+/*   Updated: 2018/03/28 22:13:10 by mhwangbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void		zero_y(t_pos *tetri)
+void	zero_y(t_pos *tetri)
 {
 	int	i;
 	int	no;
@@ -29,7 +29,7 @@ void		zero_y(t_pos *tetri)
 		tetri->y[i] -= no;
 }
 
-void		zero_x(t_pos *tetri)
+void	zero_x(t_pos *tetri)
 {
 	int	i;
 	int	no;
@@ -46,7 +46,7 @@ void		zero_x(t_pos *tetri)
 		tetri->x[i] -= no;
 }
 
-char			**map_size(int size)
+char	**map_size(int size)
 {
 	char	**map;
 	int		i;

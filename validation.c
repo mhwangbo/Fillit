@@ -6,7 +6,7 @@
 /*   By: mhwangbo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/24 04:51:15 by mhwangbo          #+#    #+#             */
-/*   Updated: 2018/03/28 15:48:25 by mhwangbo         ###   ########.fr       */
+/*   Updated: 2018/03/28 22:12:15 by mhwangbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ static int		*block_val(char *str, int i)
 			vali[1] = vali[1] + 1;
 		else if (str[j] == '\n')
 		{
-			if (str[j + 1] == '\n' || str[j + 1] == '\0')
-				j++;
+			if (str[j + 1] == '\0')
+				vali[2] = vali[2] + 1;
 			vali[2] = vali[2] + 1;
 		}
 		j++;
@@ -38,7 +38,7 @@ static int		*block_val(char *str, int i)
 
 static int		block_no(int *str)
 {
-	if (str[0] % 12 != 0 || str[1] % 4 != 0 || str[2] % 4 != 0)
+	if (str[0] % 12 != 0 || str[1] % 4 != 0 || str[2] % 5 != 0)
 		return (0);
 	else
 		return (str[1] / 4);
@@ -85,7 +85,7 @@ t_pos			*ft_valid(int fd, int *blocks)
 	{
 		valid = block_val(buff, i);
 		*blocks = block_no(valid);
-		if (blocks == 0 || it_box(buff) == 0)
+		if (*blocks == 0 || it_box(buff) == 0)
 			return (NULL);
 		else
 		{

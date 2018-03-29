@@ -6,7 +6,7 @@
 /*   By: mhwangbo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/25 21:37:45 by mhwangbo          #+#    #+#             */
-/*   Updated: 2018/03/26 23:16:26 by mhwangbo         ###   ########.fr       */
+/*   Updated: 2018/03/28 22:09:30 by mhwangbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ t_pos			*struct_malloc(char **str, int blocks)
 
 	i = -1;
 	tetri = (t_pos*)malloc(sizeof(t_pos) * 26);
+	ft_bzero(tetri, sizeof(t_pos));
 	struct_tetri(str, tetri);
 	while (++i < blocks)
 	{

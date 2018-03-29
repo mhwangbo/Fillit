@@ -6,7 +6,7 @@
 /*   By: mhwangbo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/28 00:04:18 by mhwangbo          #+#    #+#             */
-/*   Updated: 2018/03/28 20:58:01 by mhwangbo         ###   ########.fr       */
+/*   Updated: 2018/03/28 22:33:31 by mhwangbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,19 +54,15 @@ static int		pos_move(t_pos *tetri, char **map, int size, int loc)
 	{
 		if (((y + tetri[loc].y[i]) < size) && ((x + tetri[loc].x[i]) < size)
 				&& (map[y + tetri[loc].y[i]][x + tetri[loc].x[i]] != '\0'))
-		{
 			if (map[y + tetri[loc].y[i]][x + tetri[loc].x[i]] == '.')
 			{
 				map[y + tetri[loc].y[i]][x + tetri[loc].x[i]] = tetri[loc].c;
 				i++;
 				if (i == 4)
-				{
 					return (1);
-				}
 			}
 			else
 				return (0);
-		}
 		else
 			return (0);
 	}
@@ -107,47 +103,29 @@ static	int		check_pos(t_pos *tetri, char **map, int size, int *loc)
 	}
 }
 
-/* static void		map_increase(t_pos tetri, char **map, int *size)
-{
-	*size += 1;
-	map = map_size(*size);
-	tetri.x_po = 0;
-	tetri.y_po = 0;
-} */
-
 int				receive_solver(t_pos *tetri, char **map, int loc, int size, int blocks)
 {
 	if (loc == 0 && tetri[loc].x_po == (size - 1) && tetri[loc].y_po == (size - 1))
 	{
-		size++;
-		map = map_size(size);
+		map = map_size(++size);
 		tetri[0].x_po = 0;
 		tetri[0].y_po = 0;
 	}
 	if (pos_move(tetri, map, size, loc) == 0)
-	{
 		while (check_pos(tetri, map, size, &loc) == 1)
 		{
 			if (pos_move(tetri, map, size, loc) == 1)
 			{
 				if (loc == (blocks - 1))
-				{
-			printf("%s\n", map[0]);
-			printf("%s\n", map[1]);
-			printf("%s\n", map[2]);
 					return (1);
-				}
 				loc++;
-				break;
+				break ;
 			}
 		}
-	}
 	else
 	{
 		if (loc == (blocks - 1))
-		{
 			return (1);
-		}
 		loc++;
 	}
 	receive_solver(tetri, map, loc, size, blocks);
