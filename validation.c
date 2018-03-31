@@ -6,7 +6,7 @@
 /*   By: mhwangbo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/24 04:51:15 by mhwangbo          #+#    #+#             */
-/*   Updated: 2018/03/28 22:12:15 by mhwangbo         ###   ########.fr       */
+/*   Updated: 2018/03/29 00:59:22 by mhwangbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ t_pos			*ft_valid(int fd, int *blocks)
 		{
 			if ((split = block_link(buff)) == NULL)
 				return (NULL);
-			return (struct_malloc(split, *blocks));
+			return (struct_malloc(split));
 		}
 	}
 	return (NULL);

@@ -6,7 +6,7 @@
 /*   By: mhwangbo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 17:02:13 by mhwangbo          #+#    #+#             */
-/*   Updated: 2018/03/28 22:04:37 by mhwangbo         ###   ########.fr       */
+/*   Updated: 2018/03/29 00:52:10 by mhwangbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct		s_pos
 
 t_pos				*ft_valid(int fd, int *blocks);
 char				**block_link(char *str);
-t_pos				*struct_malloc(char **str, int blocks);
+t_pos				*struct_malloc(char **str);
 char				**map_size(int i);
 void				zero_y(t_pos *tetri);
 void				zero_x(t_pos *tetri);

@@ -6,7 +6,7 @@
 /*   By: mhwangbo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/25 21:37:45 by mhwangbo          #+#    #+#             */
-/*   Updated: 2018/03/28 22:09:30 by mhwangbo         ###   ########.fr       */
+/*   Updated: 2018/03/29 01:19:47 by mhwangbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,19 +67,29 @@ static void		struct_tetri(char **str, t_pos *tetri)
 	}
 }
 
-t_pos			*struct_malloc(char **str, int blocks)
+t_pos			*struct_malloc(char **str)
 {
 	t_pos	*tetri;
 	int		i;
 
-	i = -1;
+	i = 0;
 	tetri = (t_pos*)malloc(sizeof(t_pos) * 26);
 	ft_bzero(tetri, sizeof(t_pos));
-	struct_tetri(str, tetri);
-	while (++i < blocks)
+	while (i < 26)
 	{
+		tetri[i].c = '\0';
+		i++;
+	}
+	i = 0;
+	struct_tetri(str, tetri);
+	while (i < 26)
+	{
+		if (tetri[i].c == '\0')
+			break ;
 		zero_y(&tetri[i]);
 		zero_x(&tetri[i]);
+		i++;
 	}
+	printf("i: %d\n", i);
 	return (tetri);
 }

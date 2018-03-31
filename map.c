@@ -6,7 +6,7 @@
 /*   By: mhwangbo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/26 18:04:48 by mhwangbo          #+#    #+#             */
-/*   Updated: 2018/03/28 22:13:10 by mhwangbo         ###   ########.fr       */
+/*   Updated: 2018/03/29 01:00:37 by mhwangbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,10 @@ void	zero_y(t_pos *tetri)
 	i = -1;
 	while (++i < 4)
 	{
+	printf("zero_y: y[i] [%d]\n", tetri->y[i]);
 		if (tetri->y[i] < no)
 			no = tetri->y[i];
+		printf("nono: %d\n", no);
 	}
 	i = -1;
 	while (++i < 4)
@@ -55,10 +57,11 @@ char	**map_size(int size)
 	i = 0;
 	if (!(map = (char**)malloc(sizeof(char*) * (size + 1))))
 		return (0);
+		
 	while (i < size)
 	{
 		j = 0;
-		if (!(map[i] = (char*)malloc(sizeof(char) * (size + 1))))
+		if (!(map[i] = ft_memalloc(sizeof(char) * (size + 1))))
 			return (0);
 		while (j < size)
 		{
