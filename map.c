@@ -6,7 +6,7 @@
 /*   By: mhwangbo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/26 18:04:48 by mhwangbo          #+#    #+#             */
-/*   Updated: 2018/03/29 01:00:37 by mhwangbo         ###   ########.fr       */
+/*   Updated: 2018/03/31 19:52:09 by mhwangbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,8 @@ void	zero_y(t_pos *tetri)
 	i = -1;
 	while (++i < 4)
 	{
-	printf("zero_y: y[i] [%d]\n", tetri->y[i]);
 		if (tetri->y[i] < no)
 			no = tetri->y[i];
-		printf("nono: %d\n", no);
 	}
 	i = -1;
 	while (++i < 4)

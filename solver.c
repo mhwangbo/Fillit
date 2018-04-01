@@ -6,7 +6,7 @@
 /*   By: mhwangbo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/28 00:04:18 by mhwangbo          #+#    #+#             */
-/*   Updated: 2018/03/29 01:19:49 by mhwangbo         ###   ########.fr       */
+/*   Updated: 2018/03/31 20:43:05 by mhwangbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,18 @@ static int		pos_move(t_pos *tetri, char **map, int size, int loc)
 
 	x = tetri[loc].x_po;
 	y = tetri[loc].y_po;
-	// printf("loc[%d] x[%d] y[%d]\n", loc, tetri[loc].x_po,tetri[loc].y_po);
 	i = 0;
-	// printf("i [%d] x: %d y: %d\n", i, (tetri[loc].x[i]), (tetri[loc].y[i]));
 	while (i < 4)
 	{
 		if (((y + tetri[loc].y[i]) < size) &&
 			   	((x + tetri[loc].x[i]) < size) &&
 			   	(map[y + tetri[loc].y[i]][x + tetri[loc].x[i]] != '\0'))
+		{
+			system("clear");
+			for (int i = 0; i < size; i++)
+				printf("%s\n", map[i]);
+			printf("\n");
+			system("sleep 0.2");
 			if (map[y + tetri[loc].y[i]][x + tetri[loc].x[i]] == '.')
 			{
 				map[y + tetri[loc].y[i]][x + tetri[loc].x[i]] = tetri[loc].c;
@@ -66,6 +70,7 @@ static int		pos_move(t_pos *tetri, char **map, int size, int loc)
 			}
 			else
 				return (0);
+		}
 		else
 			return (0);
 	}
@@ -106,26 +111,12 @@ static	int		check_pos(t_pos *tetri, char **map, int size, int *loc)
 	}
 }
 
+
 int				receive_solver(t_pos *tetri, char **map, int loc, int size, int blocks)
 {
-//	for (int i = 0; i < 26; i++)
-//	{
-//		if (tetri[i].c == '\0')
-//			break ;
-//		printf("%c\n",tetri[i].c);
-//		for (int j = 0; j < 4; j++)
-//			printf("%d ", tetri[i].x[j]);
-//		printf("\n");
-//		for (int j = 0; j < 4; j++)
-//			printf("%d ", tetri[i].y[j]);
-//		printf("\n");
-//		printf("x_po:%d y_po:%d\n", tetri[i].x_po, tetri[i].y_po);
-//		printf("\n\n\n");
-//	}
-//	exit(0);
+//	g_i++;
 	if (loc == 0 && tetri[loc].x_po == (size - 1) && tetri[loc].y_po == (size - 1))
 	{
-		// printf("size x: %d y: %d loc: %d size: %d\n", tetri[loc].x_po, tetri[loc].y_po, loc, size);
 		ft_memdel((void**)map);
 		map = map_size(++size);
 		tetri[0].x_po = 0;
@@ -134,16 +125,16 @@ int				receive_solver(t_pos *tetri, char **map, int loc, int size, int blocks)
 	if (pos_move(tetri, map, size, loc) == 0)
 		while (check_pos(tetri, map, size, &loc) == 1)
 		{
-			/* system("sleep 0.25");
-			system("clear"); */
-			for (int i = 0; i < size; i++)
-				printf("%s\n", map[i]);
-			printf("\n");
 			if (pos_move(tetri, map, size, loc) == 1)
 			{
-				// printf("if x: %d y: %d loc: %d size: %d\n",tetri[loc].x_po, tetri[loc].y_po, loc, size);
-				if (loc == (blocks - 1))
+				if (loc == blocks - 1)
+				{
+	//		for (int i = 0; i < size; i++)
+	//			printf("%s\n", map[i]);
+//			printf("\n");
+//			printf("%d\n", g_i);
 					return (1);
+				}
 				loc++;
 				tetri[loc].x_po = 0;
 				tetri[loc].y_po = 0;
@@ -152,14 +143,20 @@ int				receive_solver(t_pos *tetri, char **map, int loc, int size, int blocks)
 		}
 	else
 	{
-		// printf("if x: %d y: %d loc: %d size: %d\n", tetri[loc].x_po, tetri[loc].y_po, loc, size);
-			for (int i = 0; i < size; i++)
-				printf("%s\n", map[i]);
-			printf("\n");
 		if (loc == (blocks - 1))
+		{
+		//	for (int i = 0; i < size; i++)
+		//		printf("%s\n", map[i]);
+		//	printf("\n");
+		//	printf("%d\n", g_i);
 			return (1);
+		}
 		loc++;
+		tetri[loc].x_po = 0;
+		tetri[loc].y_po = 0;
 	}
+	// printf("loc [%d] size[%d]\n", loc, size);
+	//		printf("%d\n", g_i);
 	receive_solver(tetri, map, loc, size, blocks);
 	return (0);
 }

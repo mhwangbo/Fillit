@@ -6,7 +6,7 @@
 /*   By: mhwangbo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/24 04:51:15 by mhwangbo          #+#    #+#             */
-/*   Updated: 2018/03/29 00:59:22 by mhwangbo         ###   ########.fr       */
+/*   Updated: 2018/03/31 16:29:55 by mhwangbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ static int		*block_val(char *str, int i)
 	int		j;
 
 	j = 0;
-	vali = ft_memalloc(4);
+	vali = (int*)malloc(sizeof(int) * 4);
+	ft_memset((void*)vali, 0, 4);
 	while (j < i)
 	{
 		if (str[j] == '.')
@@ -38,55 +39,63 @@ static int		*block_val(char *str, int i)
 
 static int		block_no(int *str)
 {
+	int i;
+
 	if (str[0] % 12 != 0 || str[1] % 4 != 0 || str[2] % 5 != 0)
 		return (0);
 	else
-		return (str[1] / 4);
+	{
+		i = str[0] / 12;
+		return (i);
+	}
 }
 
-static int		it_box(char *str)
+static	void	it_box_support(int *x, int *i)
 {
-	int i;
-	int row;
-	int col;
+	*x = 0;
+	*i += 1;
+}
 
+static	int		it_box(char *str)
+{
+	int	x;
+	int	y;
+	int	i;
+
+	x = 0;
+	y = 0;
 	i = -1;
-	row = 0;
-	col = 0;
-	while (str[++i] != '\0')
-	{
-		if (str[i] == '\n' && ++row == 4)
+	while (str[++i])
+		if (str[i] == '.' || str[i] == '#')
 		{
-			row = -1;
-			col++;
+			if (++x == 4 && str[i + 1] == '\n')
+			{
+				it_box_support(&x, &i);
+				if (++y == 4 && str[i + 1] == '\n')
+					it_box_support(&y, &i);
+				else if (y == 4 && str[i + 1] == '\0')
+					return (1);
+			}
 		}
-		else if (row == 4 && str[i] != '\n')
+		else
 			return (0);
-		if (str[i] == '\n' && col == 4)
-		{
-			if (str[i + 1] != '\n' && str[i + 1] != '\0')
-				return (0);
-			col = 0;
-			i++;
-		}
-	}
-	return (1);
+	return (0);
 }
 
 t_pos			*ft_valid(int fd, int *blocks)
 {
 	char	buff[550];
-	int		*valid;
 	int		i;
 	char	**split;
 
 	i = read(fd, buff, 550);
 	if (i != 0)
 	{
-		valid = block_val(buff, i);
-		*blocks = block_no(valid);
+		*blocks = block_no(block_val(buff, i));
 		if (*blocks == 0 || it_box(buff) == 0)
+		{
 			return (NULL);
+		}
 		else
 		{
 			if ((split = block_link(buff)) == NULL)
