@@ -32,7 +32,10 @@ t_pos				*struct_malloc(char **str);
 char				**map_size(int i);
 void				zero_y(t_pos *tetri);
 void				zero_x(t_pos *tetri);
-int					receive_solver(t_pos *tetri, char **map,
-		int loc, int size, int blocks);
+int					solver(t_pos *tetri, int size, char **map, int block);
+int					will_it_fit(char **map, t_pos tetri, int size);
+void				lets_insert(char **map, t_pos tetri);
+void				remove_it(char **map, t_pos tetri);
+int					where_to(t_pos tetri, int size);
 
 #endif

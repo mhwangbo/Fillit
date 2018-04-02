@@ -31,9 +31,12 @@ int		main(int argc, char **argv)
 	}
 	else
 	{
+		printf("b");
 		size = 2;
 		map = map_size(size);
-		receive_solver(lst, map, 0, size, blocks);
+		solver(lst, size, map, 0);
+		for (int i = 0; i < size; i++)
+			printf("%s\n", map[i]);
 	}
 	return (0);
 }

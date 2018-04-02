@@ -22,7 +22,7 @@ $(NAME): $(LIBFT) $(OBJ)
 	$(CC) $(FLAGS) $(OBJ) -o $(NAME) $(LIBFT)
 
 $(OBJ): $(LIBFT)
-	$(CC) $(FLAGS) -g $(INC) -c $(SRC_POS)
+	$(CC) $(FLAGS) $(INC) -c $(SRC_POS)
 
 $(LIBFT):
 	make -C ./lib/libft/
