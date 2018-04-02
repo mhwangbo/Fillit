@@ -6,7 +6,7 @@
 /*   By: mhwangbo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/25 21:37:45 by mhwangbo          #+#    #+#             */
-/*   Updated: 2018/03/31 17:13:44 by mhwangbo         ###   ########.fr       */
+/*   Updated: 2018/04/01 22:34:10 by mhwangbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ t_pos			*struct_malloc(char **str)
 	while (i < 26)
 	{
 		tetri[i].c = '\0';
+		tetri[i].x_po = 0;
+		tetri[i].y_po = 0;
 		i++;
 	}
 	i = 0;
