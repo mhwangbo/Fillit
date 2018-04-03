@@ -6,7 +6,7 @@
 /*   By: mhwangbo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/24 03:55:18 by mhwangbo          #+#    #+#             */
-/*   Updated: 2018/04/01 23:40:39 by mhwangbo         ###   ########.fr       */
+/*   Updated: 2018/04/02 17:39:40 by mhwangbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int        main(int argc, char **argv)
         size = getsize(blocks);
 		printf("size [%d]\n", size);
         map = map_size(size);
-        solver(lst, size, map, 0);
+        solver_s(lst, size, map, 0);
     }
     return (0);
 }
