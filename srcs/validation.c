@@ -6,13 +6,13 @@
 /*   By: mhwangbo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/24 04:51:15 by mhwangbo          #+#    #+#             */
-/*   Updated: 2018/04/02 19:17:12 by mhwangbo         ###   ########.fr       */
+/*   Updated: 2018/04/02 19:35:07 by mhwangbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int			*block_val(char *str, int i)
+int		*block_val(char *str, int i)
 {
 	int		*vali;
 	int		j;
@@ -37,9 +37,9 @@ int			*block_val(char *str, int i)
 	return (vali);
 }
 
-int			block_no(int *str)
+int		block_no(int *str)
 {
-	int i;
+	int	i;
 
 	if (str[0] % 12 != 0 || str[1] % 4 != 0 || str[2] % 5 != 0)
 		return (0);
@@ -50,13 +50,13 @@ int			block_no(int *str)
 	}
 }
 
-void		it_box_support(int *x, int *i)
+void	it_box_support(int *x, int *i)
 {
 	*x = 0;
 	*i += 1;
 }
 
-int			it_box(char *str)
+int		it_box(char *str)
 {
 	int	x;
 	int	y;
@@ -82,7 +82,7 @@ int			it_box(char *str)
 	return (0);
 }
 
-t_pos			*ft_valid(int fd, int *blocks)
+t_pos	*ft_valid(int fd, int *blocks)
 {
 	char	buff[550];
 	int		i;
