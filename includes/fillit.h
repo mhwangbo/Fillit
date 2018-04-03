@@ -6,7 +6,7 @@
 /*   By: mhwangbo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 17:02:13 by mhwangbo          #+#    #+#             */
-/*   Updated: 2018/04/02 19:34:24 by mhwangbo         ###   ########.fr       */
+/*   Updated: 2018/04/02 19:54:09 by mhwangbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <fcntl.h>
-# include "libft.h"
+# include "../lib/libft/libft.h"
 
 typedef struct	s_pos
 {
