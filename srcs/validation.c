@@ -6,13 +6,13 @@
 /*   By: mhwangbo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/24 04:51:15 by mhwangbo          #+#    #+#             */
-/*   Updated: 2018/04/02 01:28:46 by mhwangbo         ###   ########.fr       */
+/*   Updated: 2018/04/02 19:17:12 by mhwangbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static int		*block_val(char *str, int i)
+int			*block_val(char *str, int i)
 {
 	int		*vali;
 	int		j;
@@ -37,7 +37,7 @@ static int		*block_val(char *str, int i)
 	return (vali);
 }
 
-static int		block_no(int *str)
+int			block_no(int *str)
 {
 	int i;
 
@@ -50,13 +50,13 @@ static int		block_no(int *str)
 	}
 }
 
-static	void	it_box_support(int *x, int *i)
+void		it_box_support(int *x, int *i)
 {
 	*x = 0;
 	*i += 1;
 }
 
-static	int		it_box(char *str)
+int			it_box(char *str)
 {
 	int	x;
 	int	y;

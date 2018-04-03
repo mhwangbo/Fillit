@@ -6,13 +6,13 @@
 /*   By: mhwangbo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/25 21:37:45 by mhwangbo          #+#    #+#             */
-/*   Updated: 2018/04/01 22:34:10 by mhwangbo         ###   ########.fr       */
+/*   Updated: 2018/04/02 19:19:54 by mhwangbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static void		struct_tetri_support(t_pos *tmp, int *i, int *h, int *pos)
+void		struct_tetri_support(t_pos *tmp, int *i, int *h, int *pos)
 {
 	int	y;
 	int pos_tmp;
@@ -33,7 +33,7 @@ static void		struct_tetri_support(t_pos *tmp, int *i, int *h, int *pos)
 	*i = i_tmp;
 }
 
-static void		support_two(t_pos *tmp, int *pos, int *i, int *j)
+void		support_two(t_pos *tmp, int *pos, int *i, int *j)
 {
 	int pos_tmp;
 
@@ -43,7 +43,7 @@ static void		support_two(t_pos *tmp, int *pos, int *i, int *j)
 	*pos = pos_tmp;
 }
 
-static void		struct_tetri(char **str, t_pos *tetri)
+void		struct_tetri(char **str, t_pos *tetri)
 {
 	int		i;
 	int		j;
@@ -67,7 +67,7 @@ static void		struct_tetri(char **str, t_pos *tetri)
 	}
 }
 
-t_pos			*struct_malloc(char **str)
+t_pos		*struct_malloc(char **str)
 {
 	t_pos	*tetri;
 	int		i;

@@ -6,7 +6,7 @@
 /*   By: mhwangbo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/26 18:04:48 by mhwangbo          #+#    #+#             */
-/*   Updated: 2018/04/02 00:38:14 by mhwangbo         ###   ########.fr       */
+/*   Updated: 2018/04/02 19:21:23 by mhwangbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ char	**map_size(int size)
 	i = 0;
 	if (!(map = (char**)malloc(sizeof(char*) * (size + 1))))
 		return (0);
-		
 	while (i < size)
 	{
 		j = 0;

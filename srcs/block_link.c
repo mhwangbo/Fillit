@@ -6,60 +6,52 @@
 /*   By: mhwangbo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/25 21:33:18 by mhwangbo          #+#    #+#             */
-/*   Updated: 2018/04/02 01:31:54 by mhwangbo         ###   ########.fr       */
+/*   Updated: 2018/04/02 19:18:08 by mhwangbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static int		block_link_support(char **split, int i, int j, int count)
+int		block_link_support(char **split, int i, int j, int count)
 {
-	if (count == 0)
-	{
-		if (count == 0)
-		{
-			if (split[i + 1][j] != '#' && split[i][j + 1] != '#'
-					&& split[i][j - 1] != '#')
-				return (0);
-		}
-		else if (count == 3)
-		{
-			count = 0;
-			if (split[i - 1][j] != '#' && split[i][j + 1] != '#'
-					&& split[i][j - 1] != '#')
-				return (0);
-		}
-		else if (split[i + 1][j] != '#' && split[i - 1][j] != '#'
-				&& split[i][j + 1] != '#' && split[i][j - 1] != '#')
-			return (0);
-	}
-	return (1);
+	int	k;
+
+	k = 0;
+	if (split[i][j + 1] == '#')
+		k++;
+	if (split[i][j - 1] == '#')
+		k++;
+	if (count != 0 && split[i - 1][j] == '#')
+		k++;
+	if (count != 3 && split[i + 1][j] == '#')
+		k++;
+	return (k);
 }
 
-char			**block_link(char *str)
+char	**block_link(char *str)
 {
 	char	**split;
 	int		i;
 	int		j;
-	int		count;
+	int		k;
 
-	i = 0;
-	j = 0;
-	count = 0;
+	i = -1;
+	k = 0;
 	split = ft_strsplit(str, '\n');
-	while (split[i])
+	while (split[++i])
 	{
-		while (split[i][j])
+		j = -1;
+		while (split[i][++j])
 		{
 			if (split[i][j] == '#')
-			{
-				if (block_link_support(split, i, j, count) == 0)
-					return (NULL);
-			}
-			j++;
+				k += block_link_support(split, i, j, (i % 4));
 		}
-		i++;
-		count++;
+		if (i % 4 == 3)
+		{
+			if (k != 6 && k != 8)
+				return (NULL);
+			k = 0;
+		}
 	}
 	return (split);
 }
