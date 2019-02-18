@@ -7,7 +7,7 @@ Searching the optimal solution among a huge set of possibilities, in a respectab
 #
 
 ## Usage
-  usage: fillit input_file
+    usage: fillit input_file
 
 ## Mandatory part
 
